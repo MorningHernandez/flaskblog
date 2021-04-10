@@ -7,6 +7,7 @@ import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
 
+
 app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
@@ -15,7 +16,7 @@ login = LoginManager(app)
 login.login_view = 'login'
 
 
-#SMTPHandler instance for email
+# SMTPHandler instance for email
 if not app.debug:
     # SMTP Handler
     if app.config['MAIL_SERVER']:
@@ -44,5 +45,6 @@ if not app.debug:
 
     app.logger.setLevel(logging.INFO)
     app.logger.info('Microblog startup')
+
 
 from app import routes, models, errors
